@@ -1,0 +1,1039 @@
+[
+  {
+    "name": "lcs-both-empty",
+    "input": {
+      "task": "lcs",
+      "a": "",
+      "b": ""
+    },
+    "reason": "Both empty; zero rows/columns and empty reconstruction.",
+    "output": {
+      "length": 0,
+      "sequence": ""
+    }
+  },
+  {
+    "name": "lcs-second-empty",
+    "input": {
+      "task": "lcs",
+      "a": "abc",
+      "b": ""
+    },
+    "reason": "Second empty; avoid invalid character indexing.",
+    "output": {
+      "length": 0,
+      "sequence": ""
+    }
+  },
+  {
+    "name": "lcs-repetitions",
+    "input": {
+      "task": "lcs",
+      "a": "aabbaa",
+      "b": "ababaa"
+    },
+    "reason": "Repeated characters and more than one candidate alignment.",
+    "output": {
+      "length": 5,
+      "sequence": "aabaa"
+    }
+  },
+  {
+    "name": "lcs-alternative-optimum",
+    "input": {
+      "task": "lcs",
+      "a": "ABC",
+      "b": "BAC"
+    },
+    "reason": "Accept either AC or BC, not one fixed optimal witness.",
+    "output": {
+      "length": 2,
+      "sequence": "AC"
+    }
+  },
+  {
+    "name": "lcs-gapped-subsequence",
+    "input": {
+      "task": "lcs",
+      "a": "axbycz",
+      "b": "abc"
+    },
+    "reason": "Subsequence rather than longest common substring.",
+    "output": {
+      "length": 3,
+      "sequence": "abc"
+    }
+  },
+  {
+    "name": "lcs-ascii-spaces",
+    "input": {
+      "task": "lcs",
+      "a": " A! a~",
+      "b": "A !~"
+    },
+    "reason": "Case, spaces and punctuation are ordinary characters.",
+    "output": {
+      "length": 3,
+      "sequence": " !~"
+    }
+  },
+  {
+    "name": "merge-empty",
+    "input": {
+      "task": "merge",
+      "sizes": []
+    },
+    "reason": "Zero blocks; empty chronological plan.",
+    "output": {
+      "cost": 0
+    }
+  },
+  {
+    "name": "merge-single",
+    "input": {
+      "task": "merge",
+      "sizes": [
+        1000000000
+      ]
+    },
+    "reason": "Single block costs zero, not its size.",
+    "output": {
+      "cost": 0
+    }
+  },
+  {
+    "name": "merge-adjacency",
+    "input": {
+      "task": "merge",
+      "sizes": [
+        1,
+        100,
+        1
+      ]
+    },
+    "reason": "Arbitrary two-smallest greedy would illegally skip the middle block.",
+    "output": {
+      "cost": 203
+    }
+  },
+  {
+    "name": "merge-zeros",
+    "input": {
+      "task": "merge",
+      "sizes": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "reason": "Many optimal plans, exactly n-1 valid operations still required.",
+    "output": {
+      "cost": 0
+    }
+  },
+  {
+    "name": "merge-64bit",
+    "input": {
+      "task": "merge",
+      "sizes": [
+        1000000000,
+        1000000000,
+        1000000000
+      ]
+    },
+    "reason": "Optimal 5000000000 exceeds signed 32-bit arithmetic.",
+    "output": {
+      "cost": 5000000000
+    }
+  },
+  {
+    "name": "merge-interior",
+    "input": {
+      "task": "merge",
+      "sizes": [
+        8,
+        1,
+        1,
+        8
+      ]
+    },
+    "reason": "Interior child merges must precede parent merge in reconstructed plan.",
+    "output": {
+      "cost": 30
+    }
+  },
+  {
+    "name": "tree-empty",
+    "input": {
+      "task": "tree",
+      "n": 0,
+      "weights": [],
+      "edges": []
+    },
+    "reason": "Empty tree allows empty independent set.",
+    "output": {
+      "weight": 0
+    }
+  },
+  {
+    "name": "tree-negative",
+    "input": {
+      "task": "tree",
+      "n": 3,
+      "weights": [
+        -5,
+        -1,
+        -2
+      ],
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    "reason": "All-negative tree returns weight zero.",
+    "output": {
+      "weight": 0
+    }
+  },
+  {
+    "name": "tree-tie",
+    "input": {
+      "task": "tree",
+      "n": 2,
+      "weights": [
+        5,
+        5
+      ],
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    "reason": "Either single endpoint is optimal; no duplicate/adjacent vertices.",
+    "output": {
+      "weight": 5
+    }
+  },
+  {
+    "name": "tree-64bit",
+    "input": {
+      "task": "tree",
+      "n": 5,
+      "weights": [
+        1000000000,
+        1000000000,
+        1000000000,
+        1000000000,
+        1000000000
+      ],
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    "reason": "Selected sum 3000000000 exceeds signed 32-bit.",
+    "output": {
+      "weight": 3000000000
+    }
+  },
+  {
+    "name": "tree-parent-decision",
+    "input": {
+      "task": "tree",
+      "n": 4,
+      "weights": [
+        9,
+        6,
+        6,
+        6
+      ],
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ]
+    },
+    "reason": "Skipping parent permits all three children and beats taking root.",
+    "output": {
+      "weight": 18
+    }
+  },
+  {
+    "name": "tree-zero",
+    "input": {
+      "task": "tree",
+      "n": 3,
+      "weights": [
+        0,
+        0,
+        0
+      ],
+      "edges": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    "reason": "Zero-weight ties and non-path edge ordering.",
+    "output": {
+      "weight": 0
+    }
+  },
+  {
+    "name": "naive-both-empty",
+    "input": {
+      "task": "naive",
+      "text": "",
+      "pattern": ""
+    },
+    "reason": "Empty pattern includes boundary zero.",
+    "output": {
+      "positions": [
+        0
+      ]
+    }
+  },
+  {
+    "name": "naive-empty-text",
+    "input": {
+      "task": "naive",
+      "text": "",
+      "pattern": "a"
+    },
+    "reason": "Nonempty pattern in empty text has no occurrences.",
+    "output": {
+      "positions": []
+    }
+  },
+  {
+    "name": "naive-empty-pattern",
+    "input": {
+      "task": "naive",
+      "text": " A!",
+      "pattern": ""
+    },
+    "reason": "Return every boundary, including final boundary.",
+    "output": {
+      "positions": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "name": "naive-pattern-longer",
+    "input": {
+      "task": "naive",
+      "text": "a",
+      "pattern": "aaa"
+    },
+    "reason": "Handle m>n before indexing a first window.",
+    "output": {
+      "positions": []
+    }
+  },
+  {
+    "name": "naive-overlap",
+    "input": {
+      "task": "naive",
+      "text": "abababa",
+      "pattern": "aba"
+    },
+    "reason": "Report overlapping starts 0, 2, 4.",
+    "output": {
+      "positions": [
+        0,
+        2,
+        4
+      ]
+    }
+  },
+  {
+    "name": "naive-nested-border",
+    "input": {
+      "task": "naive",
+      "text": "abababacababaca",
+      "pattern": "ababaca"
+    },
+    "reason": "Several prefix fallbacks; rolling updates after near-matches.",
+    "output": {
+      "positions": [
+        2,
+        8
+      ]
+    }
+  },
+  {
+    "name": "naive-ascii-quotes",
+    "input": {
+      "task": "naive",
+      "text": "~ \"A\\a\" ~ \"A\\a\"",
+      "pattern": "\"A\\a\""
+    },
+    "reason": "JSON escaping, upper/lower case and printable ASCII boundaries.",
+    "output": {
+      "positions": [
+        2,
+        10
+      ]
+    }
+  },
+  {
+    "name": "naive-collision",
+    "input": {
+      "task": "naive",
+      "text": "abdjab",
+      "pattern": "ab"
+    },
+    "reason": "ab and dj collide at base 31 modulus 101; verify actual characters.",
+    "output": {
+      "positions": [
+        0,
+        4
+      ]
+    }
+  },
+  {
+    "name": "naive-remainder",
+    "input": {
+      "task": "naive",
+      "text": "zzzzazzzza",
+      "pattern": "zza"
+    },
+    "reason": "A sliding subtraction may be negative before modular normalization.",
+    "output": {
+      "positions": [
+        2,
+        7
+      ]
+    }
+  },
+  {
+    "name": "kmp-both-empty",
+    "input": {
+      "task": "kmp",
+      "text": "",
+      "pattern": ""
+    },
+    "reason": "Empty pattern includes boundary zero.",
+    "output": {
+      "positions": [
+        0
+      ]
+    }
+  },
+  {
+    "name": "kmp-empty-text",
+    "input": {
+      "task": "kmp",
+      "text": "",
+      "pattern": "a"
+    },
+    "reason": "Nonempty pattern in empty text has no occurrences.",
+    "output": {
+      "positions": []
+    }
+  },
+  {
+    "name": "kmp-empty-pattern",
+    "input": {
+      "task": "kmp",
+      "text": " A!",
+      "pattern": ""
+    },
+    "reason": "Return every boundary, including final boundary.",
+    "output": {
+      "positions": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "name": "kmp-pattern-longer",
+    "input": {
+      "task": "kmp",
+      "text": "a",
+      "pattern": "aaa"
+    },
+    "reason": "Handle m>n before indexing a first window.",
+    "output": {
+      "positions": []
+    }
+  },
+  {
+    "name": "kmp-overlap",
+    "input": {
+      "task": "kmp",
+      "text": "abababa",
+      "pattern": "aba"
+    },
+    "reason": "Report overlapping starts 0, 2, 4.",
+    "output": {
+      "positions": [
+        0,
+        2,
+        4
+      ]
+    }
+  },
+  {
+    "name": "kmp-nested-border",
+    "input": {
+      "task": "kmp",
+      "text": "abababacababaca",
+      "pattern": "ababaca"
+    },
+    "reason": "Several prefix fallbacks; rolling updates after near-matches.",
+    "output": {
+      "positions": [
+        2,
+        8
+      ]
+    }
+  },
+  {
+    "name": "kmp-ascii-quotes",
+    "input": {
+      "task": "kmp",
+      "text": "~ \"A\\a\" ~ \"A\\a\"",
+      "pattern": "\"A\\a\""
+    },
+    "reason": "JSON escaping, upper/lower case and printable ASCII boundaries.",
+    "output": {
+      "positions": [
+        2,
+        10
+      ]
+    }
+  },
+  {
+    "name": "kmp-collision",
+    "input": {
+      "task": "kmp",
+      "text": "abdjab",
+      "pattern": "ab"
+    },
+    "reason": "ab and dj collide at base 31 modulus 101; verify actual characters.",
+    "output": {
+      "positions": [
+        0,
+        4
+      ]
+    }
+  },
+  {
+    "name": "kmp-remainder",
+    "input": {
+      "task": "kmp",
+      "text": "zzzzazzzza",
+      "pattern": "zza"
+    },
+    "reason": "A sliding subtraction may be negative before modular normalization.",
+    "output": {
+      "positions": [
+        2,
+        7
+      ]
+    }
+  },
+  {
+    "name": "rk-both-empty",
+    "input": {
+      "task": "rk",
+      "text": "",
+      "pattern": ""
+    },
+    "reason": "Empty pattern includes boundary zero.",
+    "output": {
+      "positions": [
+        0
+      ]
+    }
+  },
+  {
+    "name": "rk-empty-text",
+    "input": {
+      "task": "rk",
+      "text": "",
+      "pattern": "a"
+    },
+    "reason": "Nonempty pattern in empty text has no occurrences.",
+    "output": {
+      "positions": []
+    }
+  },
+  {
+    "name": "rk-empty-pattern",
+    "input": {
+      "task": "rk",
+      "text": " A!",
+      "pattern": ""
+    },
+    "reason": "Return every boundary, including final boundary.",
+    "output": {
+      "positions": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "name": "rk-pattern-longer",
+    "input": {
+      "task": "rk",
+      "text": "a",
+      "pattern": "aaa"
+    },
+    "reason": "Handle m>n before indexing a first window.",
+    "output": {
+      "positions": []
+    }
+  },
+  {
+    "name": "rk-overlap",
+    "input": {
+      "task": "rk",
+      "text": "abababa",
+      "pattern": "aba"
+    },
+    "reason": "Report overlapping starts 0, 2, 4.",
+    "output": {
+      "positions": [
+        0,
+        2,
+        4
+      ]
+    }
+  },
+  {
+    "name": "rk-nested-border",
+    "input": {
+      "task": "rk",
+      "text": "abababacababaca",
+      "pattern": "ababaca"
+    },
+    "reason": "Several prefix fallbacks; rolling updates after near-matches.",
+    "output": {
+      "positions": [
+        2,
+        8
+      ]
+    }
+  },
+  {
+    "name": "rk-ascii-quotes",
+    "input": {
+      "task": "rk",
+      "text": "~ \"A\\a\" ~ \"A\\a\"",
+      "pattern": "\"A\\a\""
+    },
+    "reason": "JSON escaping, upper/lower case and printable ASCII boundaries.",
+    "output": {
+      "positions": [
+        2,
+        10
+      ]
+    }
+  },
+  {
+    "name": "rk-collision",
+    "input": {
+      "task": "rk",
+      "text": "abdjab",
+      "pattern": "ab"
+    },
+    "reason": "ab and dj collide at base 31 modulus 101; verify actual characters.",
+    "output": {
+      "positions": [
+        0,
+        4
+      ]
+    }
+  },
+  {
+    "name": "rk-remainder",
+    "input": {
+      "task": "rk",
+      "text": "zzzzazzzza",
+      "pattern": "zza"
+    },
+    "reason": "A sliding subtraction may be negative before modular normalization.",
+    "output": {
+      "positions": [
+        2,
+        7
+      ]
+    }
+  },
+  {
+    "name": "suffix-empty",
+    "input": {
+      "task": "suffix",
+      "text": ""
+    },
+    "reason": "No sentinel or empty suffix in output.",
+    "output": {
+      "sa": [],
+      "lcp": [],
+      "repeated": ""
+    }
+  },
+  {
+    "name": "suffix-one",
+    "input": {
+      "task": "suffix",
+      "text": "$"
+    },
+    "reason": "A literal punctuation symbol is data, not an injected sentinel.",
+    "output": {
+      "sa": [
+        0
+      ],
+      "lcp": [
+        0
+      ],
+      "repeated": ""
+    }
+  },
+  {
+    "name": "suffix-identical",
+    "input": {
+      "task": "suffix",
+      "text": "aaaaaa"
+    },
+    "reason": "Overlapping longest repeated substring; LCP reuse.",
+    "output": {
+      "sa": [
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "lcp": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "repeated": "aaaaa"
+    }
+  },
+  {
+    "name": "suffix-distinct",
+    "input": {
+      "task": "suffix",
+      "text": "~a !B"
+    },
+    "reason": "ASCII order, including space.",
+    "output": {
+      "sa": [
+        2,
+        3,
+        4,
+        1,
+        0
+      ],
+      "lcp": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "repeated": ""
+    }
+  },
+  {
+    "name": "suffix-tied-repeat",
+    "input": {
+      "task": "suffix",
+      "text": "ababcdcd"
+    },
+    "reason": "Either ab or cd is a valid longest repeated substring.",
+    "output": {
+      "sa": [
+        0,
+        2,
+        1,
+        3,
+        6,
+        4,
+        7,
+        5
+      ],
+      "lcp": [
+        0,
+        2,
+        0,
+        1,
+        0,
+        2,
+        0,
+        1
+      ],
+      "repeated": "ab"
+    }
+  },
+  {
+    "name": "suffix-banana",
+    "input": {
+      "task": "suffix",
+      "text": "banana"
+    },
+    "reason": "Canonical suffix order and previous-suffix LCP convention.",
+    "output": {
+      "sa": [
+        5,
+        3,
+        1,
+        0,
+        4,
+        2
+      ],
+      "lcp": [
+        0,
+        1,
+        3,
+        0,
+        0,
+        2
+      ],
+      "repeated": "ana"
+    }
+  },
+  {
+    "name": "aho-empty-dictionary",
+    "input": {
+      "task": "aho",
+      "patterns": [],
+      "texts": [
+        "abc",
+        "",
+        "abc"
+      ]
+    },
+    "reason": "One empty count row per independent text.",
+    "output": {
+      "counts": [
+        [],
+        [],
+        []
+      ]
+    }
+  },
+  {
+    "name": "aho-no-texts",
+    "input": {
+      "task": "aho",
+      "patterns": [
+        "a",
+        "aa"
+      ],
+      "texts": []
+    },
+    "reason": "No output rows when texts is empty.",
+    "output": {
+      "counts": []
+    }
+  },
+  {
+    "name": "aho-duplicates",
+    "input": {
+      "task": "aho",
+      "patterns": [
+        "a",
+        "aa",
+        "a"
+      ],
+      "texts": [
+        "aaaa",
+        "",
+        "aaaa"
+      ]
+    },
+    "reason": "Duplicate dictionary columns, overlaps, fresh repeated texts.",
+    "output": {
+      "counts": [
+        [
+          4,
+          3,
+          4
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          3,
+          4
+        ]
+      ]
+    }
+  },
+  {
+    "name": "aho-suffixes",
+    "input": {
+      "task": "aho",
+      "patterns": [
+        "he",
+        "she",
+        "e"
+      ],
+      "texts": [
+        "sheshe",
+        "he",
+        ""
+      ]
+    },
+    "reason": "Failure propagation counts suffix patterns.",
+    "output": {
+      "counts": [
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  {
+    "name": "aho-cross-text",
+    "input": {
+      "task": "aho",
+      "patterns": [
+        "ab"
+      ],
+      "texts": [
+        "a",
+        "b",
+        "ab",
+        "ab",
+        ""
+      ]
+    },
+    "reason": "Automaton state must not continue across texts.",
+    "output": {
+      "counts": [
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          0
+        ]
+      ]
+    }
+  },
+  {
+    "name": "aho-ascii",
+    "input": {
+      "task": "aho",
+      "patterns": [
+        "\"",
+        "\\",
+        " A",
+        "~",
+        "a"
+      ],
+      "texts": [
+        "\"\\ A~a",
+        "\"\\ A~a",
+        ""
+      ]
+    },
+    "reason": "All printable ASCII symbols, escaping and reset.",
+    "output": {
+      "counts": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  }
+]

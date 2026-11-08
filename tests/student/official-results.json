@@ -1,0 +1,28 @@
+[
+  {
+    "mode": "--setup",
+    "command": [
+      "C:\\Users\\Ablaykhan\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "tools/run.py",
+      "--language",
+      "Java",
+      "--setup"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 1.6309153999900445,
+    "output": "Note: C:\\Users\\Ablaykhan\\Desktop\\daa-assignment-4\\Java\\source\\Main.java uses unchecked or unsafe operations.\nNote: Recompile with -Xlint:unchecked for details.\nLanguage: Java\nPASS setup: ping\n"
+  },
+  {
+    "mode": "--check",
+    "command": [
+      "C:\\Users\\Ablaykhan\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "tools/run.py",
+      "--language",
+      "Java",
+      "--check"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 5.252639900078066,
+    "output": "Note: C:\\Users\\Ablaykhan\\Desktop\\daa-assignment-4\\Java\\source\\Main.java uses unchecked or unsafe operations.\nNote: Recompile with -Xlint:unchecked for details.\nLanguage: Java\nPASS public 1: example-ping\nPASS public 2: example-lcs\nPASS public 3: example-merge\nPASS public 4: example-tree\nPASS public 5: example-naive\nPASS public 6: example-kmp\nPASS public 7: example-rk\nPASS public 8: example-suffix\nPASS public 9: example-aho\nPASS public 10: lcs-empty\nPASS public 11: lcs-tie\nPASS public 12: lcs-not-substring\nPASS public 13: merge-empty\nPASS public 14: merge-one\nPASS public 15: merge-zero\nPASS public 16: merge-64bit\nPASS public 17: tree-empty\nPASS public 18: tree-negative\nPASS public 19: tree-tie\nPASS public 20: tree-zero\nPASS public 21: naive-empty-pattern\nPASS public 22: naive-both-empty\nPASS public 23: naive-long-pattern\nPASS public 24: naive-overlap\nPASS public 25: naive-case-spaces\nPASS public 26: kmp-empty-pattern\nPASS public 27: kmp-both-empty\nPASS public 28: kmp-long-pattern\nPASS public 29: kmp-overlap\nPASS public 30: kmp-case-spaces\nPASS public 31: rk-empty-pattern\nPASS public 32: rk-both-empty\nPASS public 33: rk-long-pattern\nPASS public 34: rk-overlap\nPASS public 35: rk-case-spaces\nPASS public 36: rk-collision\nPASS public 37: suffix-empty\nPASS public 38: suffix-one\nPASS public 39: suffix-overlap\nPASS public 40: suffix-order\nPASS public 41: aho-empty-dictionary\nPASS public 42: aho-no-texts\nPASS public 43: aho-overlap-duplicate\nPASS public 44: aho-suffix\nPASS state reset: two complete batches in one process\n"
+  }
+]

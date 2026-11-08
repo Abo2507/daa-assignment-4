@@ -1,0 +1,446 @@
+{
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "logical_cpus": 12,
+    "processor": "12th Gen Intel(R) Core(TM) i5-12450H",
+    "physical_ram_bytes": 16906129408
+  },
+  "compile_command": [
+    "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.12.101-hotspot\\bin\\javac.EXE",
+    "--release",
+    "17",
+    "-encoding",
+    "UTF-8",
+    "-d",
+    "C:\\Users\\Ablaykhan\\Desktop\\daa-assignment-4\\Java\\build\\student-benchmark",
+    "C:\\Users\\Ablaykhan\\Desktop\\daa-assignment-4\\Java\\source\\Algorithms.java",
+    "C:\\Users\\Ablaykhan\\Desktop\\daa-assignment-4\\Java\\source\\Json.java",
+    "C:\\Users\\Ablaykhan\\Desktop\\daa-assignment-4\\Java\\source\\Main.java",
+    "C:\\Users\\Ablaykhan\\Desktop\\daa-assignment-4\\tests\\student\\SearchBenchmark.java"
+  ],
+  "compile_exit_code": 0,
+  "compile_stderr": "Note: C:\\Users\\Ablaykhan\\Desktop\\daa-assignment-4\\Java\\source\\Main.java uses unchecked or unsafe operations.\nNote: Recompile with -Xlint:unchecked for details.\n",
+  "command": [
+    "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.12.101-hotspot\\bin\\java.EXE",
+    "-Xmx384m",
+    "-XX:ActiveProcessorCount=1",
+    "-XX:+UseSerialGC",
+    "-cp",
+    "C:\\Users\\Ablaykhan\\Desktop\\daa-assignment-4\\Java\\build\\student-benchmark",
+    "SearchBenchmark"
+  ],
+  "exit_code": 0,
+  "single_cpu_affinity": true,
+  "wall_seconds": 4.193567399983294,
+  "benchmark": {
+    "java_version": "21.0.12.1+1-LTS",
+    "generator": "java.util.Random(seed=20261108+n); uniform lowercase text; random substring pattern; repetitive=a^n/a^m",
+    "warmup_ns_per_method_case": 100000000,
+    "calibration_calls": 32,
+    "target_trial_ns": 20000000,
+    "maximum_repetitions": 32768,
+    "measured_trials_per_method_case": 3,
+    "collision_test_passed": true,
+    "scope": "Direct Algorithms method, including preprocessing and output allocation; shared switch dispatch, loop and volatile sink assignment included. Excludes compilation, JVM startup, input generation, JSON and oracle validation.",
+    "jit_policy": "Default tiered JVM compilation; 100ms warmup per method/case plus calibration; no forced GC, GC pauses remain included.",
+    "rows": [
+      {
+        "case": "random",
+        "n": 500,
+        "m": 50,
+        "seed": 20261608,
+        "pattern_start": 444,
+        "algorithm": "naive",
+        "occurrences": 1,
+        "repetitions_per_trial": 24521,
+        "elapsed_ns": [
+          21760600,
+          30843100,
+          30194700
+        ],
+        "ns_per_call": [
+          887.427103299213,
+          1257.8239060397211,
+          1231.3812650381306
+        ],
+        "median_ns_per_call": 1231.3812650381306,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "random",
+        "n": 500,
+        "m": 50,
+        "seed": 20261608,
+        "pattern_start": 444,
+        "algorithm": "kmp",
+        "occurrences": 1,
+        "repetitions_per_trial": 19937,
+        "elapsed_ns": [
+          58894500,
+          28243500,
+          23988300
+        ],
+        "ns_per_call": [
+          2954.030195114611,
+          1416.6374078346792,
+          1203.2050960525655
+        ],
+        "median_ns_per_call": 1416.6374078346792,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "random",
+        "n": 500,
+        "m": 50,
+        "seed": 20261608,
+        "pattern_start": 444,
+        "algorithm": "rk",
+        "occurrences": 1,
+        "repetitions_per_trial": 5190,
+        "elapsed_ns": [
+          24787900,
+          23049100,
+          22849500
+        ],
+        "ns_per_call": [
+          4776.088631984586,
+          4441.059730250482,
+          4402.601156069364
+        ],
+        "median_ns_per_call": 4441.059730250482,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "random",
+        "n": 1500,
+        "m": 150,
+        "seed": 20262608,
+        "pattern_start": 788,
+        "algorithm": "naive",
+        "occurrences": 1,
+        "repetitions_per_trial": 8432,
+        "elapsed_ns": [
+          66011700,
+          42814200,
+          38136900
+        ],
+        "ns_per_call": [
+          7828.712049335863,
+          5077.585388994307,
+          4522.877134724858
+        ],
+        "median_ns_per_call": 5077.585388994307,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "random",
+        "n": 1500,
+        "m": 150,
+        "seed": 20262608,
+        "pattern_start": 788,
+        "algorithm": "kmp",
+        "occurrences": 1,
+        "repetitions_per_trial": 5446,
+        "elapsed_ns": [
+          22894100,
+          21920500,
+          20754000
+        ],
+        "ns_per_call": [
+          4203.837679030481,
+          4025.064267352185,
+          3810.8703635695924
+        ],
+        "median_ns_per_call": 4025.064267352185,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "random",
+        "n": 1500,
+        "m": 150,
+        "seed": 20262608,
+        "pattern_start": 788,
+        "algorithm": "rk",
+        "occurrences": 1,
+        "repetitions_per_trial": 1509,
+        "elapsed_ns": [
+          34698000,
+          22411200,
+          22995200
+        ],
+        "ns_per_call": [
+          22994.03578528827,
+          14851.68986083499,
+          15238.70112657389
+        ],
+        "median_ns_per_call": 15238.70112657389,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "random",
+        "n": 3000,
+        "m": 300,
+        "seed": 20264108,
+        "pattern_start": 302,
+        "algorithm": "naive",
+        "occurrences": 1,
+        "repetitions_per_trial": 3011,
+        "elapsed_ns": [
+          21208300,
+          24752700,
+          24409700
+        ],
+        "ns_per_call": [
+          7043.606775157755,
+          8220.757223513783,
+          8106.841580870143
+        ],
+        "median_ns_per_call": 8106.841580870143,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "random",
+        "n": 3000,
+        "m": 300,
+        "seed": 20264108,
+        "pattern_start": 302,
+        "algorithm": "kmp",
+        "occurrences": 1,
+        "repetitions_per_trial": 627,
+        "elapsed_ns": [
+          3620500,
+          4085100,
+          3921200
+        ],
+        "ns_per_call": [
+          5774.322169059011,
+          6515.311004784689,
+          6253.907496012759
+        ],
+        "median_ns_per_call": 6253.907496012759,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "random",
+        "n": 3000,
+        "m": 300,
+        "seed": 20264108,
+        "pattern_start": 302,
+        "algorithm": "rk",
+        "occurrences": 1,
+        "repetitions_per_trial": 303,
+        "elapsed_ns": [
+          7483900,
+          6737500,
+          6895800
+        ],
+        "ns_per_call": [
+          24699.3399339934,
+          22235.973597359734,
+          22758.41584158416
+        ],
+        "median_ns_per_call": 22758.41584158416,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "repetitive",
+        "n": 500,
+        "m": 50,
+        "seed": 0,
+        "pattern_start": 0,
+        "algorithm": "naive",
+        "occurrences": 451,
+        "repetitions_per_trial": 481,
+        "elapsed_ns": [
+          27923700,
+          23209200,
+          21776100
+        ],
+        "ns_per_call": [
+          58053.430353430354,
+          48251.97505197505,
+          45272.55717255717
+        ],
+        "median_ns_per_call": 48251.97505197505,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "repetitive",
+        "n": 500,
+        "m": 50,
+        "seed": 0,
+        "pattern_start": 0,
+        "algorithm": "kmp",
+        "occurrences": 451,
+        "repetitions_per_trial": 4309,
+        "elapsed_ns": [
+          162142700,
+          18388900,
+          16747700
+        ],
+        "ns_per_call": [
+          37628.846600139244,
+          4267.556277558599,
+          3886.679043861685
+        ],
+        "median_ns_per_call": 4267.556277558599,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "repetitive",
+        "n": 500,
+        "m": 50,
+        "seed": 0,
+        "pattern_start": 0,
+        "algorithm": "rk",
+        "occurrences": 451,
+        "repetitions_per_trial": 146,
+        "elapsed_ns": [
+          8141700,
+          21231200,
+          6496600
+        ],
+        "ns_per_call": [
+          55765.068493150684,
+          145419.1780821918,
+          44497.260273972606
+        ],
+        "median_ns_per_call": 55765.068493150684,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "repetitive",
+        "n": 1500,
+        "m": 150,
+        "seed": 0,
+        "pattern_start": 0,
+        "algorithm": "naive",
+        "occurrences": 1351,
+        "repetitions_per_trial": 31,
+        "elapsed_ns": [
+          14022200,
+          14405300,
+          12106300
+        ],
+        "ns_per_call": [
+          452329.03225806454,
+          464687.0967741936,
+          390525.8064516129
+        ],
+        "median_ns_per_call": 452329.03225806454,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "repetitive",
+        "n": 1500,
+        "m": 150,
+        "seed": 0,
+        "pattern_start": 0,
+        "algorithm": "kmp",
+        "occurrences": 1351,
+        "repetitions_per_trial": 1931,
+        "elapsed_ns": [
+          31103300,
+          42919400,
+          22209200
+        ],
+        "ns_per_call": [
+          16107.353702744691,
+          22226.514759192127,
+          11501.398239254273
+        ],
+        "median_ns_per_call": 16107.353702744691,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "repetitive",
+        "n": 1500,
+        "m": 150,
+        "seed": 0,
+        "pattern_start": 0,
+        "algorithm": "rk",
+        "occurrences": 1351,
+        "repetitions_per_trial": 48,
+        "elapsed_ns": [
+          17641100,
+          31948100,
+          18526200
+        ],
+        "ns_per_call": [
+          367522.9166666667,
+          665585.4166666666,
+          385962.5
+        ],
+        "median_ns_per_call": 385962.5,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "repetitive",
+        "n": 3000,
+        "m": 300,
+        "seed": 0,
+        "pattern_start": 0,
+        "algorithm": "naive",
+        "occurrences": 2701,
+        "repetitions_per_trial": 12,
+        "elapsed_ns": [
+          23426700,
+          22878600,
+          25370200
+        ],
+        "ns_per_call": [
+          1952225.0,
+          1906550.0,
+          2114183.3333333335
+        ],
+        "median_ns_per_call": 1952225.0,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "repetitive",
+        "n": 3000,
+        "m": 300,
+        "seed": 0,
+        "pattern_start": 0,
+        "algorithm": "kmp",
+        "occurrences": 2701,
+        "repetitions_per_trial": 984,
+        "elapsed_ns": [
+          23209600,
+          25633100,
+          28215100
+        ],
+        "ns_per_call": [
+          23586.9918699187,
+          26049.89837398374,
+          28673.88211382114
+        ],
+        "median_ns_per_call": 26049.89837398374,
+        "correct_outputs_checked": true
+      },
+      {
+        "case": "repetitive",
+        "n": 3000,
+        "m": 300,
+        "seed": 0,
+        "pattern_start": 0,
+        "algorithm": "rk",
+        "occurrences": 2701,
+        "repetitions_per_trial": 11,
+        "elapsed_ns": [
+          32759100,
+          18305600,
+          19377600
+        ],
+        "ns_per_call": [
+          2978100.0,
+          1664145.4545454546,
+          1761600.0
+        ],
+        "median_ns_per_call": 1761600.0,
+        "correct_outputs_checked": true
+      }
+    ]
+  }
+}
