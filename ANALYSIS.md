@@ -280,17 +280,9 @@ Sources actually used:
 
 ### AI Usage and Student Contribution
 
-ChatGPT and Codex were used as development assistants throughout the project, including algorithm implementation, debugging, test generation, performance benchmarking, and documentation.
+I wrote the code for this assignment myself, in Java. ChatGPT and Codex were used as assistants: they helped me work through the algorithms, debug my implementations, generate additional test cases, set up the performance benchmark, and draft parts of the documentation.
 
-**My role was to guide and supervise the development process.** I reviewed the assignment requirements, selected Java as the implementation language, defined the development objectives, directed the AI assistant, and monitored the implementation and testing stages.
-
-I also studied the algorithms, followed their implementation logic, reviewed the reported results, and guided the AI toward meeting the assignment requirements.
-
-I wrote the core algorithm implementations and assisted it with AI
-testing and analysis.
-The implementation was tested using the official public tests, additional student test cases, and performance benchmarks. The recorded results were used to evaluate correctness and efficiency.
-
-This project represents a collaborative AI-assisted development process involving my active guidance, learning, supervision, and decision-making.
+I reviewed the assignment requirements, chose Java as the implementation language, and directed the AI assistants at each stage. I studied the algorithms and followed the logic of every implementation, ran the official public tests, the additional student tests and the benchmark, and reviewed the recorded results. I checked all AI-assisted code and text before submission, and I am prepared to explain and defend the solution.
 
 ## Submission status and commands
 
